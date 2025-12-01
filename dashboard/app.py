@@ -1,9 +1,11 @@
 import streamlit as st
 import pandas as pd
-import time
 import altair as alt
+import time
 from pathlib import Path
+from datetime import datetime, timedelta, timezone
 
+st.set_page_config(page_title="Live Aktien Dashboard", layout="wide")
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap');
@@ -19,9 +21,16 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif !important;
 }
 </style>
-""", unsafe_allow_html=True)
+""", 
+unsafe_allow_html=True)
 
 CSV_PATH = Path(__file__).resolve().parent.parent / "data" / "stock_prices.csv"
+REFRESH_DEFAULT = 5                 
+OLD_DATA_THRESHOLD = 60        
+SHOW_OLD_DATA = 300          
+MAX_POINTS_TO_PLOT = 200            
+STOCKS = ["AAPL", "TSLA", "NVDA", "MSFT"]
+
 st.title("Aktien im Vergleich")
 
 refreshrate = 5
@@ -63,7 +72,7 @@ while True:
                             y=alt.Y(
                                 "price:Q",
                                 title="Preis",
-                                scale=alt.Scale(zero=False)   # 🔥 dynamische Y-Achse
+                                scale=alt.Scale(zero=False)  
                             ),
                             tooltip=["time_full", "symbol", "price"]
                         )
@@ -76,4 +85,4 @@ while True:
                     col.write(f"{sym} – noch keine Daten")       
     else:
         st.warning("CSV existiert noch nicht. Starte Producer & Consumer.")
-    time.sleep(refreshrate)
+    time.sleep(REFRESH_DEFAULT)

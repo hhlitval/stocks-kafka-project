@@ -1,6 +1,9 @@
 import json
 import os
+import pandas as pd
 import yfinance as yf
+from datetime import datetime, time as dtime
+import pytz
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -32,3 +35,22 @@ def build_message(symbol, price, timestamp):
         "price": round(price, 2),
         "timestamp": timestamp
     }
+
+# TODO
+def load_historical_data(symbol, n=300): 
+    df = yf.download(symbol, period="5d", interval="1m")
+    df = df.tail(n)
+    df = df.reset_index()
+    df["timestamp"] = pd.to_datetime(df["Datetime"])
+    df["symbol"] = symbol
+    df["price"] = df["Close"]
+    print(df)
+    return df[["timestamp", "symbol", "price"]]
+
+# TODO
+def is_market_open():
+    # now = datetime.now(pytz.timezone("US/Eastern"))
+    # if now.weekday() >= 5: 
+    #     return False
+    # return dtime(9, 30) <= now.time() <= dtime(16, 0)
+    return 0

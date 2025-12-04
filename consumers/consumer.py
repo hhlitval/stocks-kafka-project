@@ -22,7 +22,6 @@ consumer = KafkaConsumer(
     enable_auto_commit=True,
     value_deserializer=lambda v: json.loads(v.decode("utf-8"))
 )
-
 print("[Consumer] Warte auf Nachrichten...")
 
 try:

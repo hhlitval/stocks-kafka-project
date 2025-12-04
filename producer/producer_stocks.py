@@ -24,14 +24,10 @@ while True:
       price = get_stock_price(symbol)
 
       if price is not None:
-          message = build_message(symbol, price, timestamp)
-          
+          message = build_message(symbol, price, timestamp)          
           producer.send(topic, value=message)
           producer.flush()
-
           print(f"[Producer {symbol}] → gesendet: {message}")
-
       else:
           print(f"[Producer {symbol}] Keine Daten für {symbol} erhalten.")
-
     time.sleep(interval)

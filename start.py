@@ -14,11 +14,9 @@ if is_market_open():
 
   print("Starte Producer...")
   subprocess.Popen([str(VENV_PYTHON), "-m", "producer.producer_stocks"])
-  # subprocess.Popen(["python", "-m", "producer.producer_stocks"])
 
   print("Starte Consumer...")
-  subprocess.Popen([str(VENV_PYTHON), "-m", "consumers.consumer"])  
-  # subprocess.Popen(["python", "-m", "consumers.consumer"])
+  subprocess.Popen([str(VENV_PYTHON), "-m", "consumer.consumer"])  
 else:
   print("Lade historische Daten...")
 

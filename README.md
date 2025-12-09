@@ -45,7 +45,7 @@ When the market is closed (weekends, holidays, after-hours):
 
 - The `demo_app.py` file is optimized for static hosting on Streamlit Cloud.
 - It removes the Kafka dependency and initializes the dashboard just with historical data.
-- **[Live Dashboard auf Streamlit Cloud](https://stocks-kafka-project-dmyootqrc6yzfjxcw7gfuw.streamlit.app/)**
+- **[Live Dashboard auf Streamlit Cloud](https://realtime-stock-dashboard-dmyootqrc6yzfjxcw7gfuw.streamlit.app/)**
 
 ### UI Language Note
 

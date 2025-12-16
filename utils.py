@@ -65,7 +65,7 @@ def is_market_open():
 def get_previous_close(symbol):
     try:
         t = yf.Ticker(symbol)
-        hist = t.history(period="2d", interval="1d")
+        hist = t.history(period="5d", interval="1d")
         if hist.shape[0] >= 2:
             prev_close = hist["Close"].iloc[-2]
             return float(prev_close)

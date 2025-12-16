@@ -78,6 +78,9 @@ with placeholder.container():
             continue
 
         current = d["price"].iloc[-1]
+        if prev_close[sym] is None or prev_close[sym] == 0: 
+            col.metric(ISSUERS[sym], f"${current:.2f}", delta="N/A")
+            continue
         delta = current - prev_close[sym]
         pct = (delta / prev_close[sym]) * 100
 

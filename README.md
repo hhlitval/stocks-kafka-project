@@ -41,12 +41,6 @@ When the market is closed (weekends, holidays, after-hours):
 - Kafka producer/consumer do not start.
 - Dashboard loads and displays the last 300 historical values from Yahoo Finance.
 
-### Static Demo Version
-
-- The `demo_app.py` file is optimized for static hosting on Streamlit Cloud.
-- It removes the Kafka dependency and initializes the dashboard just with historical data.
-- **[Live Dashboard auf Streamlit Cloud](https://realtime-stock-dashboard-dmyootqrc6yzfjxcw7gfuw.streamlit.app/)**
-
 ### UI Language Note
 
 - The UI text inside the Streamlit dashboard is in German. The codebase and documentation remain in English.
